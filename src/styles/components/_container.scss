@@ -1,0 +1,28 @@
+.container {
+    margin: 0;
+    display: flex;
+    background-image: url('../assets/background-jpg/layer-1@3x.jpg');
+    background-size: 141%;
+    background-repeat: no-repeat;
+    background-position: 64% 66%;
+    justify-content: center;
+    align-items: center;
+
+
+    @media (min-width: $tablet) and (max-width: $tablet-landscape) {
+        background-size: 380%;
+        background-repeat: no-repeat;
+        background-position: 54% 55%;
+    }
+
+    @media (min-width: $phone) and (max-width: $tablet) {
+        background-size: 500%;
+    }
+
+    @media (max-width: $phone) {
+        background-size: 586%;
+        background-repeat: no-repeat;
+        background-position: 58% 56%
+    }
+
+}

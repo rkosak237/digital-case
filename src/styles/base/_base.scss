@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Exo+2");
+
+// Place dedicated for global styles
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+html, body {
+    font-size: 16px;
+
+    @media (min-width: $tablet) and (max-width: $tablet-landscape) {
+        font-size: 15px;
+    }
+
+    @media (min-width: $phone-big) and (max-width: $tablet) {
+        font-size: 14px;
+    }
+
+    @media (min-width: $phone) and (max-width: $phone-big) {
+        font-size: 13px;
+    }
+
+    @media (min-width: $phone) and (max-width: $tablet) {
+        font-size: 12px;
+    }
+
+
+    @media  (max-width: $phone) {
+        font-size: 11.5px;
+    }
+
+    @media (max-width: $phone-small) {
+        font-size: 9.5px;
+    }
+}
+
+p, h1, h2, h3, span {
+    color: $font-color;
+    font-family: 'Lato', sans-serif;
+}
+h1 {
+    font-family: 'Exo ExtraBold', arial;
+}
+button {
+    font-family: 'Lato Black', sans-serif;
+}
+
+html, body, .container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+}

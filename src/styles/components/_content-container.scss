@@ -1,0 +1,55 @@
+.content-container {
+    width: 46%;
+
+    @media (max-width: $tablet) {
+        width: 100%;
+    }
+
+    @media (max-width: $phone) {
+
+    }
+
+    &__header {
+        font-size: 1.28125rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.5;
+        letter-spacing: 0.6px;
+    }
+
+    &__copy {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5;
+        width: 51%;
+
+        @media (max-width: $tablet) {
+            width: 100%;
+        }
+
+        @media (max-width: $phone) {
+
+        }
+    }
+
+    &__text {
+        margin-top: 2.2rem;
+        font-weight: 500;
+        font-size: 1rem;
+        width: 22.8125rem;
+
+         @media (max-width: $tablet) {
+             width: 100%;
+         }
+
+        &--bold {
+            font-family: 'Lato Black';
+        }
+    }
+
+    &__form-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+}

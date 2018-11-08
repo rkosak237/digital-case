@@ -1,0 +1,41 @@
+.card-bg--blurred {
+    height: 30rem;
+    width: 58rem;
+    background-image: url('../assets/background-jpg/layer-1@3x.jpg');
+    background-size: 290%;
+    background-repeat: no-repeat;
+    background-position: 60% 63%;
+    filter: blur(6px);
+    position: absolute;
+    -webkit-box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
+
+    @media (min-width: $tablet) and (max-width: $tablet-landscape) {
+        background-size: 403%;
+        background-repeat: no-repeat;
+        background-position: 55.5% 55%;
+    }
+
+    @media (min-width: $phone)
+    and (max-width: $tablet) {
+        height: 100%;
+        width: 100%;
+        background-size: 512%;
+        background-repeat: no-repeat;
+        background-position: 53.5% 55%;
+    }
+    @media (min-width: $phone-small) and (max-width: $phone) {
+        height: 120%;
+        width: 120%;
+        background-size: 586%;
+        background-position: 59% 73%
+    }
+
+    @media (max-width: $phone-small) {
+        height: 120%;
+        width: 120%;
+        background-size: 586%;
+        background-position: 57% 59%
+    }
+}
