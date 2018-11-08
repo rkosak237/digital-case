@@ -25,7 +25,7 @@
     }
 
     &:disabled {
-        background: $btn-disabled;
-        color: $btn-focus-text;
+        background: lighten($btn-disabled, 30%);
+        color: $btn-text;
     }
 }

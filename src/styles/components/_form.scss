@@ -116,13 +116,14 @@
 .select_drop-down {
     content: '';
     border-top: 0.875rem solid black;
-    border-bottom: 0px solid black;
-    border-left: 0.9375rem solid transparent;
-    border-right: 0.9375rem solid transparent;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-right: 0.2rem solid black;
+    border-top: 0.2rem solid black;
+    transform: rotate(135deg);
     position: absolute;
-    right: 0.8125rem;
-    bottom: 3.625rem;
-    border-radius: 5px;
+    right: 1rem;
+    bottom: 3.700rem;
 
     @media (min-width: $phone) and (max-width: $tablet) {
         bottom: 3.5rem;
@@ -135,19 +136,4 @@
     @media (max-width: $phone-small) {
         bottom: 3.6rem;
     }
-
-
-    &::after {
-        content: '';
-        border-top: 0.875rem solid white;
-        border-bottom: 0px solid black;
-        border-left: 0.9375rem solid transparent;
-        border-right: 0.9375rem solid transparent;
-        top: -1.125rem;
-        position: absolute;
-        right: -0.9375rem;
-    }
-
-
-
 }

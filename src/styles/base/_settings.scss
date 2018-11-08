@@ -1,10 +1,22 @@
 // /*
 //     Place for variables:
 //         - colors
-//         - font-sizes
+//         - fonts
+                // - color,
+                // - font-family
+                // - imports
 //         - margins
 //         - etc.
 // */
+//import fonts
+
+@import url('https://fonts.googleapis.com/css?family=Exo:400,800');
+@import url('https://fonts.googleapis.com/css?family=Exo:400,800|Lato:400,900');
+
+//fonts
+$exo-font: 'Exo', sans-serif;
+$lato-font:'Lato', sans-serif;
+
 
 // //Colors
 // $background-color: #fff;
@@ -28,6 +40,7 @@ $btn-focus-bg: darken($btn-background, 50%);
 
 //form/input
 $invaild-input: #c60001;
+
 
 
 // //Spacing
@@ -61,3 +74,6 @@ $desktop: 1280px;
 // @media all and (min-width: 480px) and (max-width: 768px) { }
 
 // @media all and (max-width: 480px) { }
+
+$container-bg-position: 64% 66%;
+$container-bg-size: 141%;

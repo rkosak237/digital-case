@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const SingleOption = ({ text }) => (
-        <option className="form__option"
+        <option className="form__option "
         value={text}>{text}</option>
 );
 
