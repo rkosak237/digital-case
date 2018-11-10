@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             simple: '',
             btnStatus: true,
             isValid: false,
@@ -25,6 +25,10 @@ class SignUp extends React.Component {
                 country: 'Polska',
                 checkbox: true,
             },
+            validationError: {
+                invaildUser: false,
+                invaildEmail: false
+            }
         }
     }
 
@@ -33,18 +37,36 @@ class SignUp extends React.Component {
         const { userNameInBase } = this.state;
         e.preventDefault();
 
-        if (this.checkDataWithState()) {
+        if(this.validateInputs()) {
+
+            if(this.checkDataWithState()) {
+                this.setState({
+                    userNameInBase: !userNameInBase,
+                    userValidation: {
+                        fullNameReceived: '',
+                        emailReceived: '',
+                        countryReceived: '',
+                        checkboxReceived: false,
+                    }
+                })
+            } else {
+                this.props.history.push("/success");
+            }
+
+        } else {
+            const { invaildUser, invaildEmail } = this.state.validationError;
             this.setState({
-                userNameInBase: !userNameInBase,
                 userValidation: {
                     fullNameReceived: '',
                     emailReceived: '',
                     countryReceived: '',
                     checkboxReceived: false,
+                },
+                validationError: {
+                    invaildUser: !invaildUser,
+                    invaildEmail: !invaildEmail
                 }
             })
-        } else {
-           return  this.validateInputs ? this.props.history.push("/success") : '';
         }
 
     }
@@ -85,13 +107,11 @@ class SignUp extends React.Component {
              fullNameReceived,
              emailReceived,
              countryReceived,
-             checkboxReceived
          } = this.state.userValidation;
          const {
              fullName,
              email,
              country,
-             checkbox
          } = this.state.user;
 
         //fullname validation
@@ -101,13 +121,10 @@ class SignUp extends React.Component {
             isEmailInState = emailReceived.includes(email),
 
         //country validation
-            countryIsValid = countryReceived.includes(country),
-
-        //checkbox validation
-            checkboxIsValid = checkboxReceived === checkbox;
+            countryIsValid = countryReceived.includes(country);
 
         //return true/false if every variable is true
-        return isFullNameinState && isEmailInState && countryIsValid && checkboxIsValid;
+        return isFullNameinState && isEmailInState && countryIsValid;
     }
 
     handleChange = (e) => {
@@ -131,6 +148,7 @@ class SignUp extends React.Component {
             countryReceived,
             checkboxReceived
         } = this.state.userValidation;
+        const { validationError } = this.state;
         return (
             <main className='sign-up page'>
                 <div className="card-bg--blurred"></div>
@@ -146,6 +164,7 @@ class SignUp extends React.Component {
                             handleSubmit={this.handleSubmit}
                             handleChange={this.handleChange}
                             userNameInBase={userNameInBase}
+                            validationError={validationError}
                             form={"signUp"}
                         />
                     </section>
@@ -153,7 +172,7 @@ class SignUp extends React.Component {
                         type="submit"
                         text={'Zarejestruj się'}
                         onClick={this.handleSubmit}
-                        disabled={!this.validateInputs()}
+                        // disabled={!this.validateInputs()}
                     />
                 </section>
             </main>

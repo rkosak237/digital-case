@@ -1,30 +1,30 @@
 .card-bg--blurred {
-    height: 30rem;
-    width: 58rem;
-    background-image: url('../assets/background-jpg/layer-1@3x.jpg');
-    background-size: 290%;
+    height: 120%;
+    width: 120%;
+    background-image: url(/static/media/layer-1@3x.faf0c6e0.jpg);
+    background-size: 197%;
     background-repeat: no-repeat;
-    background-position: 60% 63%;
-    filter: blur(6px);
+    background-position: 62% 68%;
     position: absolute;
+    left: -3rem;
+    top: -2rem;
+    filter: blur(6px);
     -webkit-box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0px -1px 6px 5px rgba(0, 0, 0, 0.2);
 
     @media (min-width: $tablet) and (max-width: $tablet-landscape) {
-        background-size: 403%;
+        background-size: 436%;
         background-repeat: no-repeat;
-        background-position: 55.5% 55%;
+        background-position: 62.5% 55%;
     }
 
-    @media (min-width: $phone)
-    and (max-width: $tablet) {
-        height: 100%;
-        width: 100%;
+    @media (min-width: $phone) and (max-width: $tablet) {
         background-size: 512%;
         background-repeat: no-repeat;
         background-position: 53.5% 55%;
     }
+
     @media (min-width: $phone-small) and (max-width: $phone) {
         height: 120%;
         width: 120%;

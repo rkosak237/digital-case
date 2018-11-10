@@ -17,12 +17,14 @@
 
     @media (min-width: $phone) and (max-width: $tablet) {
         background-size: 500%;
+        background-repeat: no-repeat;
+        background-position: 60.5% 55%;
     }
 
     @media (max-width: $phone) {
         background-size: 586%;
         background-repeat: no-repeat;
-        background-position: 58% 56%
+        background-position: 58% 56%;
     }
 
 }

@@ -6,7 +6,7 @@ import SuccessCard from '../view/SuccessCard';
 const baseUrl = process.env.PUBLIC_URL;
 
 const AppRouter = () => (
-    <BrowserRouter className="container">
+    <BrowserRouter>
         <Route render={({location}) => (
             <TransitionGroup>
                 <CSSTransition

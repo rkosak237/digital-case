@@ -10,7 +10,8 @@ const Form = ({
         checkbox,
         handleChange,
         handleSubmit,
-        userNameInBase
+        userNameInBase,
+        validationError
     }) => (
     <div className="content-container content-container__form-wrapper">
         <span
@@ -20,6 +21,22 @@ const Form = ({
         }>
         Te dane znajdują się już w naszej bazie
         </span>
+        <span
+            className = {
+                validationError.invaildUser ?
+                `input__invaildUser--invaild` :
+                `input__invaildUser--invaild error__invisible`}>
+            Imię i nazwisko powinno składać się <br /> z dwóch części.
+            Powinno zawierać min. 5 znaków.
+        </span>
+        <span
+            className = {
+                validationError.invaildEmail ?
+                `input__invaildEmail--invaild`:
+                `input__invaildEmail--invaild error__invisible`}>
+            Email powinien zawierać @. Wprowadź poprawny format.
+        </span>
+
         <form
         className="form"
         id={form}
@@ -27,7 +44,7 @@ const Form = ({
 
             <input
             className = {
-                userNameInBase ?
+                userNameInBase || validationError.invaildUser ?
                 `form__input ${'input--invaild'}` :
                 `form__input`
             }
@@ -36,12 +53,19 @@ const Form = ({
             type="text"
             onChange={handleChange}
             value={fullName} />
-            <input className="form__input"
+
+            <input className = {
+                validationError.invaildEmail ?
+                `form__input ${'input--invaild'}` :
+                `form__input`
+            }
             name='emailReceived'
             placeholder="mail"
-            type="text"
+            type="email"
+            minLength={6}
             onChange={handleChange}
-            value={email} />
+            value={email}
+             />
 
             <SelectCountry
                 country={country}
