@@ -6,12 +6,12 @@ import SuccessCard from '../view/SuccessCard';
 const baseUrl = process.env.PUBLIC_URL;
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={baseUrl}>
         <Route render={({location}) => (
             <TransitionGroup>
                 <CSSTransition
                 key={location.key}
-                timeout={2000}
+                timeout={1000}
                 classNames="fade">
                     <Switch location={location}>
                         <Route path={baseUrl + "/"} exact={true} component={SignUp} />

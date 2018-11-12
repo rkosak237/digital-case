@@ -15,8 +15,8 @@
         transition: .3s ease-in-out;
 
         &:invalid {
-            border: 1px solid $invaild-input;
-            color: $invaild-input;
+            border: 1px solid $invalid-input;
+            color: $invalid-input;
         }
     }
 
@@ -54,17 +54,17 @@
     }
 }
 
-.input--invaild {
-    border: 3px solid $invaild-input;
-    color: $invaild-input;
+.input--invalid {
+    border: 3px solid $invalid-input;
+    color: $invalid-input;
     transition: .3s ease-in-out;
     &:focus {
         border: inherit;
     }
 }
 
-.input__userInBase--invaild  {
-    background: $invaild-input;
+.input__userInBase--invalid  {
+    background: $invalid-input;
     color: $font-color;
     font-size: 0.75rem;
     position: absolute;
@@ -96,7 +96,7 @@
         content: '';
         border-top: 0.5rem solid transparent;
         border-bottom: 0.5rem solid transparent;
-        border-left: 1.4375rem solid $invaild-input;
+        border-left: 1.4375rem solid $invalid-input;
         position: absolute;
         right: -0.75rem;
         top: 1rem;
@@ -108,8 +108,8 @@
         }
     }
 }
-.input__invaildUser--invaild {
-    @extend .input__userInBase--invaild;
+.input__invalidUser--invalid {
+    @extend .input__userInBase--invalid;
     top: -0.5rem;
     left: -20.5rem;
 
@@ -142,8 +142,8 @@
     }
 }
 
-.input__invaildEmail--invaild {
-    @extend .input__userInBase--invaild;
+.input__invalidEmail--invalid {
+    @extend .input__userInBase--invalid;
     margin: 0;
     top: 4.6rem;
     left: -23.2rem;

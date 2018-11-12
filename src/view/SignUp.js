@@ -2,17 +2,15 @@ import * as React from 'react';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import Content from '../components/Content';
-import Form from '../components/Form';
+import Form from '../components/components-form/Form';
 import { withRouter } from "react-router-dom";
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            simple: '',
-            btnStatus: true,
-            isValid: false,
             userNameInBase: false,
+            showErrors: false,
             userValidation: {
                 fullNameReceived: '',
                 emailReceived: '',
@@ -26,63 +24,52 @@ class SignUp extends React.Component {
                 checkbox: true,
             },
             validationError: {
-                invaildUser: false,
-                invaildEmail: false
-            }
+                invalidUser: true,
+                invalidEmail: true
+            },
         }
     }
 
 
     handleSubmit = (e) => {
-        const { userNameInBase } = this.state;
+        const {
+            userNameInBase,
+        } = this.state;
+
         e.preventDefault();
+        const clearInvalidState = {
+            fullNameReceived: '',
+            emailReceived: '',
+            countryReceived: '',
+            checkboxReceived: false,
+        }
 
         if(this.validateInputs()) {
-
             if(this.checkDataWithState()) {
                 this.setState({
+                    showErrors: false,
                     userNameInBase: !userNameInBase,
-                    userValidation: {
-                        fullNameReceived: '',
-                        emailReceived: '',
-                        countryReceived: '',
-                        checkboxReceived: false,
-                    }
+                    userValidation: clearInvalidState
                 })
             } else {
                 this.props.history.push("/success");
             }
-
         } else {
-            const { invaildUser, invaildEmail } = this.state.validationError;
             this.setState({
-                userValidation: {
-                    fullNameReceived: '',
-                    emailReceived: '',
-                    countryReceived: '',
-                    checkboxReceived: false,
-                },
-                validationError: {
-                    invaildUser: !invaildUser,
-                    invaildEmail: !invaildEmail
-                }
+                showErrors: true,
+                userValidation: clearInvalidState
             })
         }
 
     }
 
-    validateInputs = (e) => {
+    validateInputs = (name) => {
         const {
             fullNameReceived,
             emailReceived,
-            countryReceived
         } = this.state.userValidation;
-        // const {
-        //     fullName,
-        //     email,
-        //     country,
-        //     checkbox
-        // } = this.state.user;
+        const { validationError } = this.state;
+
 
         //regexp
         const regexValidMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -93,12 +80,25 @@ class SignUp extends React.Component {
             itHasNameAndSurname = fullNameReceived.match(regexFullName),
 
         //email vaildation
-            emailIsValid = emailReceived.match(regexValidMail),
+            emailIsValid = emailReceived.match(regexValidMail);
 
         //country validation
-            countryIsValid = countryReceived !== '';
+            // countryIsValid = countryReceived !== '';
 
-        return fullNameLength && itHasNameAndSurname && emailIsValid && countryIsValid;
+        switch(name) {
+            case 'fullNameReceived':
+                validationError.invalidUser = fullNameLength || itHasNameAndSurname ? false : true;
+                break;
+            case 'emailReceived':
+                validationError.invalidEmail = emailIsValid  ? false : true;
+                break;
+            default:
+                break;
+        }
+
+        return validationError.invalidUser & validationError.invalidEmail ? false : true;
+            // return fullNameLength && itHasNameAndSurname && emailIsValid && countryIsValid;
+
 
     }
 
@@ -139,9 +139,14 @@ class SignUp extends React.Component {
                 [name]: value
             }
         })
+
+      this.validateInputs(name);
     }
+
+
+
     render() {
-        const { userNameInBase } = this.state;
+        const { userNameInBase, showErrors } = this.state;
         const {
             fullNameReceived,
             emailReceived,
@@ -165,6 +170,7 @@ class SignUp extends React.Component {
                             handleChange={this.handleChange}
                             userNameInBase={userNameInBase}
                             validationError={validationError}
+                            showErrors={showErrors}
                             form={"signUp"}
                         />
                     </section>
@@ -172,7 +178,6 @@ class SignUp extends React.Component {
                         type="submit"
                         text={'Zarejestruj się'}
                         onClick={this.handleSubmit}
-                        // disabled={!this.validateInputs()}
                     />
                 </section>
             </main>
