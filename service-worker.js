@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rkosak237/login-page-react/precache-manifest.676f1f69ea5c760afff45545f3ee5613.js"
+  "/login-page-react/precache-manifest.60296622cc522b21ff80077247b7e47f.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/rkosak237/login-page-react/index.html", {
+workbox.routing.registerNavigationRoute("/login-page-react/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
