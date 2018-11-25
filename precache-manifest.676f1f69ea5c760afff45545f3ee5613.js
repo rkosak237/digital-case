@@ -12,19 +12,19 @@ self.__precacheManifest = [
     "url": "/rkosak237/login-page-react/static/js/runtime~main.5ff60b7c.js"
   },
   {
-    "revision": "a85d3a26f018532a7275",
-    "url": "/rkosak237/login-page-react/static/js/main.a85d3a26.chunk.js"
+    "revision": "189b34f16c4c586fe6a7",
+    "url": "/rkosak237/login-page-react/static/js/main.189b34f1.chunk.js"
   },
   {
     "revision": "2df54d9a6ae2926e76f3",
     "url": "/rkosak237/login-page-react/static/js/1.2df54d9a.chunk.js"
   },
   {
-    "revision": "a85d3a26f018532a7275",
-    "url": "/rkosak237/login-page-react/static/css/main.8cdbe8a4.chunk.css"
+    "revision": "189b34f16c4c586fe6a7",
+    "url": "/rkosak237/login-page-react/static/css/main.4977eab5.chunk.css"
   },
   {
-    "revision": "147f3ccbb34cf1b8732eb95534ce6e44",
+    "revision": "a9001d7aa530a6d6e40a52fcc88ed986",
     "url": "/rkosak237/login-page-react/index.html"
   }
 ];
