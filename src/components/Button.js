@@ -5,7 +5,7 @@ const Button = ({
         onClick,
         text,
         disabled,
-        direction = "/",
+        direction = "",
         form
     }) => (
     <Link to={direction}>

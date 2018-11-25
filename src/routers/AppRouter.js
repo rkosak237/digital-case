@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import SignUp from '../view/SignUp';
 import SuccessCard from '../view/SuccessCard';
-const baseUrl = process.env.PUBLIC_URL;
 
 const AppRouter = () => (
-    <BrowserRouter basename={baseUrl}>
+    <HashRouter>
         <Route render={({location}) => (
             <TransitionGroup>
                 <CSSTransition
@@ -14,12 +13,12 @@ const AppRouter = () => (
                 timeout={1000}
                 classNames="fade">
                     <Switch location={location}>
-                        <Route path={baseUrl + "/"} exact={true} component={SignUp} />
-                        <Route path={baseUrl + "/success"} exact={true} component={SuccessCard} />
+                        <Route path={"/"} exact={true} component={SignUp} />
+                        <Route path={"/success"} exact={true} component={SuccessCard} />
                     </Switch>
                 </CSSTransition>
             </TransitionGroup>
         )}/>
-    </BrowserRouter>
+    </HashRouter>
 )
 export default AppRouter;

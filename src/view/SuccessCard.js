@@ -1,7 +1,6 @@
 import * as React from 'react';
 import logo from '../assets/logotype.png';
 import Button from '../components/Button';
-const baseUrl = process.env.PUBLIC_URL;
 
 const SuccessCard = ({signUpBtn}) => (
     <main className="success-card page">
@@ -14,7 +13,7 @@ const SuccessCard = ({signUpBtn}) => (
             <Button
                 text={'Zacznij odkrywać szlaki'}
                 onClick={signUpBtn}
-                direction={baseUrl + '/'}/>
+                direction={''}/>
         </section>
     </main>
 );

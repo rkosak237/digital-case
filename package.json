@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/rkosak237/login-page-react/",
+  "homepage": "https://rkosak237.github.io/login-page-react/",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@babel/plugin-transform-react-jsx": "^7.0.0",
