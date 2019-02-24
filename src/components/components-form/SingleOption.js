@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-const SingleOption = ({ text }) => (
+export default ({ text }) => (
         <option className="form__option "
         value={text}>{text}</option>
 );
-
-export default SingleOption;

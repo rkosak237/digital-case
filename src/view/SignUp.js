@@ -3,14 +3,15 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import Content from '../components/Content';
 import Form from '../components/components-form/Form';
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            auth: false,
+            userIsValid: false,
             userNameInBase: false,
-            showErrors: false,
             userValidation: {
                 fullNameReceived: '',
                 emailReceived: '',
@@ -23,10 +24,12 @@ class SignUp extends React.Component {
                 country: 'Polska',
                 checkbox: true,
             },
+
             validationError: {
                 invalidUser: true,
                 invalidEmail: true
             },
+            showErrors: false,
         }
     }
 
@@ -34,9 +37,9 @@ class SignUp extends React.Component {
     handleSubmit = (e) => {
         const {
             userNameInBase,
+            auth, userIsValid
         } = this.state;
 
-        e.preventDefault();
         const clearInvalidState = {
             fullNameReceived: '',
             emailReceived: '',
@@ -44,7 +47,13 @@ class SignUp extends React.Component {
             checkboxReceived: false,
         }
 
-        if(this.validateInputs()) {
+        e.preventDefault();
+        this.validateAfterSubmit();
+
+        //run validation function
+        if (userIsValid) {
+
+            // check if user is in state/database
             if(this.checkDataWithState()) {
                 this.setState({
                     showErrors: false,
@@ -52,18 +61,20 @@ class SignUp extends React.Component {
                     userValidation: clearInvalidState
                 })
             } else {
-                this.props.history.push("/success");
+                this.setState({ auth: !auth});
+
             }
         } else {
+
+            //when user data is invalid
             this.setState({
                 showErrors: true,
                 userValidation: clearInvalidState
             })
         }
-
     }
 
-    validateInputs = (name) => {
+    validateAfterSubmit = (name) => {
         const {
             fullNameReceived,
             emailReceived,
@@ -82,12 +93,10 @@ class SignUp extends React.Component {
         //email vaildation
             emailIsValid = emailReceived.match(regexValidMail);
 
-        //country validation
-            // countryIsValid = countryReceived !== '';
 
         switch(name) {
             case 'fullNameReceived':
-                validationError.invalidUser = fullNameLength || itHasNameAndSurname ? false : true;
+                validationError.invalidUser = fullNameLength && itHasNameAndSurname ? false : true;
                 break;
             case 'emailReceived':
                 validationError.invalidEmail = emailIsValid  ? false : true;
@@ -96,8 +105,15 @@ class SignUp extends React.Component {
                 break;
         }
 
-        return validationError.invalidUser & validationError.invalidEmail ? false : true;
-            // return fullNameLength && itHasNameAndSurname && emailIsValid && countryIsValid;
+            if(fullNameLength && itHasNameAndSurname && emailIsValid) {
+                this.setState({
+                    invalidUser: false,
+                    invalidEmail: false
+                });
+                this.setState({
+                    userIsValid: true,
+                })
+            }
 
 
     }
@@ -140,46 +156,51 @@ class SignUp extends React.Component {
             }
         })
 
-      this.validateInputs(name);
+      this.validateAfterSubmit(name);
     }
 
-
-
     render() {
-        const { userNameInBase, showErrors } = this.state;
+        const { userNameInBase, showErrors, userIsValid } = this.state;
         const {
             fullNameReceived,
             emailReceived,
             countryReceived,
             checkboxReceived
         } = this.state.userValidation;
-        const { validationError } = this.state;
+        const { validationError, auth } = this.state;
+
+        //if user passed validation - redirect to success component
+        if (auth) return <Redirect to="/success" />
+
         return (
-            <main className='sign-up page'>
-                <div className="card-bg--blurred"></div>
-                <section className="sign-up__wrapper">
-                    <Header />
-                    <section className="sign-up__content">
-                        <Content />
-                        <Form
-                            fullName={fullNameReceived}
-                            email={emailReceived}
-                            country={countryReceived}
-                            checkbox={checkboxReceived}
-                            handleSubmit={this.handleSubmit}
-                            handleChange={this.handleChange}
-                            userNameInBase={userNameInBase}
-                            validationError={validationError}
-                            showErrors={showErrors}
-                            form={"signUp"}
+            <main className='sign-up shadow-box page'>
+                <div className="container fade-in">
+                    <div className="card-bg--blurred"></div>
+                    <section className="sign-up__wrapper">
+                        <Header />
+                        <section className="sign-up__content">
+                            <Content />
+                            <Form
+                                fullName={fullNameReceived}
+                                email={emailReceived}
+                                country={countryReceived}
+                                checkbox={checkboxReceived}
+                                handleSubmit={this.handleSubmit}
+                                handleChange={this.handleChange}
+                                userNameInBase={userNameInBase}
+                                validationError={validationError}
+                                showErrors={showErrors}
+                                form={"signUp"}
+                            />
+                        </section>
+                        <Button
+                            disabled={!userIsValid}
+                            type="submit"
+                            text={'Zarejestruj się'}
+                            onClick={this.handleSubmit}
                         />
                     </section>
-                    <Button
-                        type="submit"
-                        text={'Zarejestruj się'}
-                        onClick={this.handleSubmit}
-                    />
-                </section>
+                </div>
             </main>
         )
     }

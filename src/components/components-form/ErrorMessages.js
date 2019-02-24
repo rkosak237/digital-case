@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-const ErrorMessages = ({
+export default ({
         userNameInBase,
         validationError,
         showErrors
@@ -12,7 +12,7 @@ const ErrorMessages = ({
                 `input__userInBase--invalid` :
                 `input__userInBase--invalid error__invisible`
             }>
-            Te dane znajdują się już w naszej bazie
+            Użytkownik istnieje w bazie
             </span>
 
             {showErrors &&
@@ -38,5 +38,3 @@ const ErrorMessages = ({
         </div>
 
 );
-
-export default ErrorMessages;

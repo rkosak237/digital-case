@@ -1,19 +1,13 @@
 .success-card {
-    @extend .sign-up;
     height: 25.5rem;
     width: 51.25rem;
-
     @media (max-width: $tablet) {
         width: 90%;
-    }
-    @media (min-width: $phone-big) and (max-width: $tablet) {
-        height: 30%;
     }
 
     @media (max-width: $phone) {
         height: 30rem;
     }
-
     &__header {
         display: flex;
         flex-direction: column;
@@ -23,16 +17,13 @@
         height: 9.375rem;
         width: 9.625rem;
     }
-
     &__wrapper {
         justify-content: flex-end;
         @extend .sign-up__wrapper;
-
     }
     &__title {
         margin: 3.375rem 0 2.9375rem 0;
     }
-
     &__head {
         display: flex;
         flex-direction: column;

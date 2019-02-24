@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SingleOption from './SingleOption';
 
-const SelectCountry = ({ handleChange, country }) => {
+export default ({ handleChange, country }) => {
     const Countries = ['Polska', 'Albania', 'Algieria', 'Andora', 'Angola', 'Antigua i Barbuda']
     return (
         <select
@@ -22,6 +22,3 @@ const SelectCountry = ({ handleChange, country }) => {
         </select>
         );
 }
-
-
-export default SelectCountry;

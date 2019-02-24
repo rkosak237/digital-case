@@ -4,7 +4,7 @@ import iconsPart1 from '../assets/icons/6-icons.png';
 import iconsPart2 from '../assets/icons/6-icons_part-2.png';
 
 
-const Header = () => (
+export default () => (
     <header className="header">
         <h1 className="header__title">Przejdź samego siebie.</h1>
         <figure className="header__icons">
@@ -17,4 +17,3 @@ const Header = () => (
     </header>
 
 );
-export default Header;

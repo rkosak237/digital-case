@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Input = ({
+export default ({
         classes,
         name,
         placeholder,
@@ -18,5 +18,3 @@ const Input = ({
             value={fullName}
             minLength={minLength} />
 );
-
-export default Input;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const LabelCheckbox = ({ checkbox, handleChange }) => (
+export default ({ checkbox, handleChange }) => (
        <label className="form__label">
             <input className="form__checkbox"
             name="checkboxReceived"
@@ -11,5 +11,3 @@ const LabelCheckbox = ({ checkbox, handleChange }) => (
             <span className="form__span">Wyrażam zgodę na przetwarzanie podanych przeze mnie danych osobowych</span>
         </label>
 );
-
-export default LabelCheckbox;

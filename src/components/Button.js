@@ -1,12 +1,18 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-const Button = ({
-        onClick,
-        text,
-        disabled,
-        direction = "",
-        form
+const initialSet = {
+    direction: '/',
+    text: 'Sample text',
+    disabled: false,
+};
+
+export default ({
+    onClick,
+    text = initialSet.text,
+    disabled = initialSet.disabled,
+    direction = initialSet.direction,
+    form
     }) => (
     <Link to={direction}>
         <button
@@ -20,5 +26,3 @@ const Button = ({
     </Link>
 
 );
-
-export default Button;

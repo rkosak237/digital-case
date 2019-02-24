@@ -49,6 +49,7 @@ const Form = ({
             type={"email"}
             onChange={handleChange}
             value={email}
+            required
             />
             <SelectCountry
                 country={country}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Content = () => (
+export default () => (
     <div className="content-container content-container__copy">
     <h3 className="content-container__header">Dołącz do naszej fantastycznej aplikacji, dzieki której znajdzesz fascynujące szlaki turystyczne.</h3>
 
@@ -12,4 +12,3 @@ const Content = () => (
 </div>
 
 );
-export default Content;

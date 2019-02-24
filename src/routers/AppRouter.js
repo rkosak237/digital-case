@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import SignUp from '../view/SignUp';
 import SuccessCard from '../view/SuccessCard';
 
-const AppRouter = () => (
+export default () => (
     <HashRouter>
         <Route render={({location}) => (
             <TransitionGroup>
@@ -21,4 +21,3 @@ const AppRouter = () => (
         )}/>
     </HashRouter>
 )
-export default AppRouter;
