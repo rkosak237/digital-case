@@ -113,6 +113,10 @@ class SignUp extends React.Component {
                 this.setState({
                     userIsValid: true,
                 })
+            } else {
+                this.setState({
+                    userIsValid: false,
+                });
             }
 
 
@@ -160,7 +164,7 @@ class SignUp extends React.Component {
     }
 
     render() {
-        const { userNameInBase, showErrors, userIsValid } = this.state;
+        const { userNameInBase, showErrors } = this.state;
         const {
             fullNameReceived,
             emailReceived,
@@ -194,7 +198,6 @@ class SignUp extends React.Component {
                             />
                         </section>
                         <Button
-                            disabled={!userIsValid}
                             type="submit"
                             text={'Zarejestruj się'}
                             onClick={this.handleSubmit}
